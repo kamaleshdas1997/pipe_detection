@@ -26,7 +26,11 @@ SECRET_KEY = 'django-insecure-8=!a(9keo67tnmztjz#!8ex#*8kwextxdv&tias39_ecu-3!+*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'crucial-ella-kamlesh-d0009f73.koyeb.app',
+    'localhost',
+    '127.0.0.1'
+]
 
 
 # Application definition
