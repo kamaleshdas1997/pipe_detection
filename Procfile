@@ -1,1 +1,1 @@
-web: gunicorn pipe_detection.wsgi:application --log-file -
+web: gunicorn pipe_detection.wsgi:application --log-file - --timeout 240
