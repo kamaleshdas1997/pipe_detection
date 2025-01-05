@@ -25,12 +25,12 @@ class PipeCountAPI(APIView):
         circles = cv2.HoughCircles(
             blurred,
             cv2.HOUGH_GRADIENT,
-            dp=1.2,
-            minDist=50,  # Increase to avoid overlapping circles
+            dp=1.0,
+            minDist=30,  # Increase to avoid overlapping circles
             param1=100,  # Increase for stricter edge detection
-            param2=50,   # Increase to detect only strong circles
-            minRadius=10, # Adjust based on pipe size
-            maxRadius=100
+            param2=30,   # Increase to detect only strong circles
+            minRadius=25, # Adjust based on pipe size
+            maxRadius=75
         )
 
         # If circles are detected, mark them on the image
@@ -38,7 +38,7 @@ class PipeCountAPI(APIView):
         if circles is not None:
             circles = np.round(circles[0, :]).astype("int")
             for (x, y, r) in circles:
-                cv2.circle(image, (x, y), r, (0, 255, 0), 4)  # Draw the circle
+                cv2.circle(image, (x, y), r, (0, 255, 0), 2)  # Draw the circle
                 cv2.rectangle(image, (x - 5, y - 5), (x + 5, y + 5), (255, 0, 0), -1)  # Draw the center
             pipe_count = len(circles)
 
